@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
+const config = require('config')
 const router = Router()
 
 // /api/auth/register
@@ -14,6 +15,8 @@ router.post(
     ],
     async (req, res) => {
     try {
+        console.log('Body', req.body);
+
         const errors = validationResult(req)
 
         if (!errors.isEmpty()) {
@@ -85,7 +88,7 @@ router.post(
         res.json({ token, userId: user.id })
 
     } catch (e) {
-        res.status(500).json({message: 'Something went wrong, please try later'})
+        res.status(500).json({message: 'Something went wrong, please try later. ' + e.message})
     }
 })
 
