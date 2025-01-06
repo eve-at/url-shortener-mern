@@ -1,5 +1,6 @@
 {
-    "port": 5000,
+    "port": 5005,
     "jwtSecret": "a-secret-string-for-jwt-token",
-    "mongoUri": ""
+    "mongoUri": "mongodb+srv://clusteruser:lAEQfZ9TIFQSCl6h@cluster0.pbfv3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    "baseUrl": "http://localhost:5005"
 }
