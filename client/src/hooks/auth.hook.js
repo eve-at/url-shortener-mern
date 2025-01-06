@@ -26,7 +26,6 @@ export const useAuth = () => {
         const data = JSON.parse(localStorage.getItem(storageName))
 
         if (data && data.token) {
-            console.log('login data', data)
             login(data.token, data.userId)
         }
 
