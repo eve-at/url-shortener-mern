@@ -54,7 +54,7 @@ export const AuthPage = () => {
     return (
         <div className="row">
             <div className='col s6 offset-s3'>
-                <h1>Make the link shorter</h1>
+                <h1>URL shortener</h1>
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
                         <span className="card-title">Authorization</span>
