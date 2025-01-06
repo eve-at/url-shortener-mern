@@ -5,10 +5,24 @@ const auth = require('../middlewares/auth.middleware')
 const router = Router()
 const config = require('config')
 
+function isValidHttpUrl(link) {
+    if (typeof link !== "string") {
+        return false;
+    }
+
+    const regex = /^(http|https):\/\//;
+    return regex.test(link);
+}
+
 router.post('/generate', auth, async (req, res) => {
     try {
-        const baseUrl = config.get('baseUrl')
         const {from} = req.body
+
+        if (! isValidHttpUrl(from)) {
+            return res.status(400).json({message: 'Invalid link'})
+        }
+
+        const baseUrl = config.get('baseUrl')
         const code = shortid.generate()
 
         const existing = await Link.findOne({from})
